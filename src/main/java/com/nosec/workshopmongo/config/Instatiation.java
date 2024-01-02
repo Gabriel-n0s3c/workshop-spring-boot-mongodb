@@ -49,7 +49,7 @@ public class Instatiation implements CommandLineRunner {
 
         post1.getComments().addAll(Arrays.asList(c1, c2));
         post2.getComments().addAll(Arrays.asList(c3));
-        
+
         postRepository.saveAll(Arrays.asList(post1,post2));
 
         maria.getPosts().addAll(Arrays.asList(post1,post2));
