@@ -1,5 +1,6 @@
 package com.nosec.workshopmongo.resources;
 
+import com.nosec.workshopmongo.domain.Post;
 import com.nosec.workshopmongo.domain.User;
 import com.nosec.workshopmongo.dto.UserDTO;
 import com.nosec.workshopmongo.services.UserService;
@@ -61,4 +62,12 @@ public class UserResource {
 
         return ResponseEntity.noContent().build();
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        User user = service.findById(id);
+
+        return ResponseEntity.ok().body(user.getPosts());
+    }
+
 }
