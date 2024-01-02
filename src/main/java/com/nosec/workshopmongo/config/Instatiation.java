@@ -2,6 +2,7 @@ package com.nosec.workshopmongo.config;
 
 import com.nosec.workshopmongo.domain.Post;
 import com.nosec.workshopmongo.domain.User;
+import com.nosec.workshopmongo.dto.AuthorDTO;
 import com.nosec.workshopmongo.repository.PostRepository;
 import com.nosec.workshopmongo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,10 +38,10 @@ public class Instatiation implements CommandLineRunner {
         SimpleDateFormat sdf =  new SimpleDateFormat("dd/MM/yyyy");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
-        Post post1 = new Post(null,sdf.parse("21/03/2018"),"Partiu viagem!", "Vou viajar para sp!", maria );
-        Post post2 = new Post(null,sdf.parse("21/03/2018"),"Bom dia!", "Acordei feliz hoje!", maria );
+        Post post1 = new Post(null,sdf.parse("21/03/2018"),"Partiu viagem!", "Vou viajar para sp!", new AuthorDTO(maria));
+        Post post2 = new Post(null,sdf.parse("21/03/2018"),"Bom dia!", "Acordei feliz hoje!", new AuthorDTO(maria) );
 
         postRepository.saveAll(Arrays.asList(post1,post2));
-        
+
     }
 }
